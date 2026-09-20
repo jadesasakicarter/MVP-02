@@ -17,4 +17,6 @@ This version is a static site and does not require Node.js. Open `index.html` in
 
 ## Next iteration
 
-Replace the sample data in `app.js` with Supabase tables and add authentication. The planned tables are `projects`, `tenders`, and `tender_matches`; user accounts are managed by Supabase Auth.
+The Supabase project now contains a `public.projects` table with 20 fictional records. Row Level Security is enabled: authenticated users can view shared demo records and their own records, while new records must belong to the signed-in user.
+
+Next, replace the sample data in `app.js` with Supabase queries and add authentication. The planned tables are `projects`, `tenders`, and `tender_matches`; user accounts are managed by Supabase Auth.
