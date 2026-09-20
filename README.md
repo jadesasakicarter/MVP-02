@@ -8,6 +8,7 @@ The first iteration of the MVP tests the core hypothesis: architecture practices
 - Comparable project cards
 - Indicative cost-per-square-metre range
 - Save-comparison interaction (prototype only)
+- 20 fictional project records for testing different types and price ranges
 - Responsive layout for desktop and mobile
 
 ## Run locally
