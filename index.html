@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A clearer starting point for architecture tender pricing." />
+    <title>Datumbaser — Tender intelligence</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Datumbaser home"><span class="brand-mark">D</span> datumbaser</a>
+      <nav aria-label="Primary navigation">
+        <a href="#projects">Projects</a>
+        <a href="#new-tender">New tender</a>
+        <button class="avatar" aria-label="Account menu">JC</button>
+      </nav>
+    </header>
+
+    <main id="top" class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Tender intelligence for architecture practices</p>
+          <h1>Price with evidence,<br /><em>not guesswork.</em></h1>
+          <p class="hero-copy">Find comparable completed projects and use your practice’s real project data to prepare a more confident tender.</p>
+          <a class="button button-primary" href="#new-tender">Find comparable projects <span>→</span></a>
+        </div>
+        <div class="hero-note">
+          <span class="note-icon">✦</span>
+          <p>Built for the people who carry the risk of getting a tender wrong.</p>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Practice overview">
+        <div><strong>24</strong><span>completed projects</span></div>
+        <div><strong>$3,120</strong><span>median cost / m²</span></div>
+        <div><strong>5 min</strong><span>to a first comparison</span></div>
+      </section>
+
+      <section id="new-tender" class="workspace-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 / Start with a brief</p><h2>What are you pricing?</h2></div>
+          <p class="section-description">Tell us enough to find useful comparisons. You can refine the brief later.</p>
+        </div>
+        <form id="tender-form" class="tender-form">
+          <label>Project type<select id="project-type" required><option value="">Select type</option><option>Multi-residential</option><option>Commercial</option><option>Education</option><option>Health</option><option>Single residential</option></select></label>
+          <label>Approx. floor area <span class="unit">m²</span><input id="area" type="number" min="1" placeholder="e.g. 2400" required /></label>
+          <label>Location<input id="location" type="text" placeholder="e.g. Melbourne, VIC" required /></label>
+          <button class="button button-dark" type="submit">Find matches <span>→</span></button>
+        </form>
+      </section>
+
+      <section id="projects" class="workspace-section results" aria-live="polite">
+        <div class="section-heading">
+          <div><p class="eyebrow">02 / Comparable projects</p><h2>Practice evidence</h2></div>
+          <span class="match-count" id="match-count">3 matches</span>
+        </div>
+        <div id="results-list" class="project-grid"></div>
+        <div class="estimate-card"><div><p class="eyebrow">Indicative range</p><strong id="estimate">$2,850 — $3,400 / m²</strong><p id="estimate-copy">Based on comparable completed projects in your practice.</p></div><button class="button button-light" id="report-button">Save comparison <span>→</span></button></div>
+      </section>
+    </main>
+    <footer><span>datumbaser</span><span>Base MVP · Evidence for better tenders</span></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
