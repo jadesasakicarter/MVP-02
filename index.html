@@ -13,11 +13,15 @@
       <nav aria-label="Primary navigation">
         <a href="#projects">Projects</a>
         <a href="#new-tender">New tender</a>
-        <button class="avatar" aria-label="Account menu">JC</button>
+        <button class="avatar" id="account-button" aria-label="Open account">JC</button>
       </nav>
     </header>
 
     <main id="top" class="shell">
+      <section class="auth-card" id="auth-card">
+        <div><p class="eyebrow">Practice workspace</p><h2>Sign in to view your evidence</h2><p id="auth-message">Create an account or sign in to load your practice projects from Supabase.</p></div>
+        <form id="auth-form"><input id="email" type="email" placeholder="you@practice.com" required /><input id="password" type="password" minlength="6" placeholder="Password (6+ characters)" required /><div class="auth-actions"><button class="button button-dark" type="submit" data-auth="signin">Sign in <span>→</span></button><button class="button button-light" type="button" data-auth="signup">Create account</button></div></form>
+      </section>
       <section class="hero">
         <div>
           <p class="eyebrow">Tender intelligence for architecture practices</p>
@@ -60,6 +64,7 @@
       </section>
     </main>
     <footer><span>datumbaser</span><span>Base MVP · Evidence for better tenders</span></footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="app.js"></script>
   </body>
 </html>

@@ -21,6 +21,10 @@ const projects = [
   { name: 'Orchard Road Hub', type: 'Commercial', meta: '2,900 m² · Newcastle · 2024', cost: 3310 }
 ];
 
+const SUPABASE_URL = 'https://mpxywnmxifiuqixmxdri.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_i6r_dD6DwdpYHSXUIvU4Kw_EWz5qwGI';
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
 const results = document.querySelector('#results-list');
 const form = document.querySelector('#tender-form');
 const count = document.querySelector('#match-count');
@@ -39,6 +43,35 @@ function render(items) {
     </article>`).join('');
   count.textContent = `${items.length} match${items.length === 1 ? '' : 'es'}`;
 }
+
+async function loadProjects() {
+  const { data, error } = await db.from('projects').select('*').order('name');
+  if (error) throw error;
+  return data.map(project => ({ name: project.name, type: project.project_type, meta: `${Number(project.floor_area_m2).toLocaleString()} m² · ${project.location} · ${project.completion_year}`, cost: Number(project.cost_per_m2) }));
+}
+
+async function startApp() {
+  const { data: { session } } = await db.auth.getSession();
+  const message = document.querySelector('#auth-message');
+  if (!session) { render(projects); return; }
+  document.querySelector('#auth-card').classList.add('signed-in');
+  document.querySelector('#auth-form').innerHTML = '<span class="signed-in-label">Signed in as ' + session.user.email + '</span><button class="button button-light" id="signout" type="button">Sign out</button>';
+  message.textContent = 'Live project evidence loaded from Supabase.';
+  try { render(await loadProjects()); } catch (error) { message.textContent = 'Could not load live data, showing demo records.'; render(projects); }
+  document.querySelector('#signout').addEventListener('click', async () => { await db.auth.signOut(); window.location.reload(); });
+}
+
+document.querySelector('#auth-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const { error } = await db.auth.signInWithPassword({ email: document.querySelector('#email').value, password: document.querySelector('#password').value });
+  document.querySelector('#auth-message').textContent = error ? error.message : 'Signed in. Loading your practice evidence…';
+  if (!error) window.location.reload();
+});
+
+document.querySelector('[data-auth="signup"]').addEventListener('click', async () => {
+  const { error } = await db.auth.signUp({ email: document.querySelector('#email').value, password: document.querySelector('#password').value });
+  document.querySelector('#auth-message').textContent = error ? error.message : 'Account created. Check your email to confirm, then sign in.';
+});
 
 form.addEventListener('submit', event => {
   event.preventDefault();
@@ -59,4 +92,4 @@ document.querySelector('#report-button').addEventListener('click', () => {
   button.disabled = true;
 });
 
-render(projects);
+startApp();
