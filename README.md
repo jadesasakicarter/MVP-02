@@ -1,6 +1,6 @@
-# Datumbaser
+# Docsifter
 
-Datumbaser is a project intelligence dashboard for architecture and interior design practices. It sits over project documents and gives teams a clearer project overview plus a second set of eyes for potential inconsistencies.
+Docsifter is a project intelligence dashboard for architecture and interior design practices. It sits over project documents and gives teams a clearer project overview plus a second set of eyes for potential inconsistencies.
 
 ## Current MVP direction
 
@@ -11,7 +11,7 @@ The prototype uses a fictional Walmer Street project to demonstrate four focused
 - **Decisions** — project decisions identified from project records.
 - **Files** — uploaded project documents and a PDF upload interaction.
 
-The language deliberately says **Potential inconsistency**, **Review required**, and **Not identified**. Datumbaser supports professional judgement; it does not claim that a document conflict is definitely an error.
+The language deliberately says **Potential inconsistency**, **Review required**, and **Not identified**. Docsifter supports professional judgement; it does not claim that a document conflict is definitely an error.
 
 ## Scope decisions
 
