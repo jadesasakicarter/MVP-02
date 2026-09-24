@@ -50,7 +50,7 @@ async function connectDropbox() {
   const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier));
   const challenge = btoa(String.fromCharCode(...new Uint8Array(digest))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   const authUrl = new URL('https://www.dropbox.com/oauth2/authorize');
-  authUrl.search = new URLSearchParams({client_id: DROPBOX_APP_KEY, response_type: 'code', token_access_type: 'offline', redirect_uri: redirectUri, code_challenge: challenge, code_challenge_method: 'S256'});
+  authUrl.search = new URLSearchParams({client_id: DROPBOX_APP_KEY, response_type: 'code', token_access_type: 'offline', redirect_uri: redirectUri, code_challenge: challenge, code_challenge_method: 'S256', scope: 'files.metadata.read files.content.read'});
   const responseUrl = await chrome.identity.launchWebAuthFlow({url: authUrl.toString(), interactive: true});
   const code = new URL(responseUrl).searchParams.get('code');
   if (!code) throw new Error('Dropbox authorization was cancelled.');
