@@ -10,6 +10,8 @@ function publishContext() {
 }
 
 publishContext();
+window.addEventListener('popstate', publishContext);
+window.addEventListener('pageshow', publishContext);
 let lastUrl = location.href;
 setInterval(() => {
   if (location.href !== lastUrl) {
