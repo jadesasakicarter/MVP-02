@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Docsifter for Dropbox",
+  "version": "0.1.0",
+  "description": "Project overview, search and document checks beside Dropbox.",
+  "permissions": ["sidePanel", "storage", "tabs"],
+  "host_permissions": ["https://www.dropbox.com/*", "https://*.dropbox.com/*"],
+  "background": {"service_worker": "background.js", "type": "module"},
+  "action": {"default_title": "Open Docsifter"},
+  "side_panel": {"default_path": "sidepanel.html"},
+  "content_security_policy": {"extension_pages": "script-src 'self'; object-src 'self'; frame-src https://mvp-02-flax.vercel.app https://*.vercel.app"},
+  "content_scripts": [{
+    "matches": ["https://www.dropbox.com/*", "https://*.dropbox.com/*"],
+    "js": ["content.js"],
+    "run_at": "document_idle"
+  }]
+}
