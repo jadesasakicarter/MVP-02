@@ -7,9 +7,13 @@
   <main>
     <p class="eyebrow">PROJECT INTELLIGENCE</p>
     <h1>Review this project</h1>
-    <p class="intro">Search project files, review the project overview, and find information worth checking.</p>
+    <p class="intro">A lightweight view of the Dropbox project you are currently browsing. No Docsifter sign-in is required for this panel.</p>
+    <label class="search-label" for="project-search">Search this project</label>
+    <input id="project-search" type="search" placeholder="Search files and notes…" />
+    <section class="card"><span class="card-kicker">CURRENT LOCATION</span><strong id="location-name">Waiting for Dropbox…</strong><p id="location-note">Open a project folder or file in Dropbox to start.</p></section>
+    <section class="card"><span class="card-kicker">QUICK REVIEW</span><div class="review-row"><span>Documents found</span><strong id="file-count">—</strong></div><div class="review-row"><span>Flags to review</span><strong id="flag-count">—</strong></div></section>
+    <p id="search-status" class="status" hidden></p>
     <button id="open-dashboard">Open full Docsifter dashboard ↗</button>
-    <iframe id="docsifter" title="Docsifter project dashboard" src="https://mvp-02-flax.vercel.app/"></iframe>
   </main>
   <script src="sidepanel.js"></script>
 </body>
