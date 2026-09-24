@@ -3,7 +3,7 @@
   "name": "Docsifter for Dropbox",
   "version": "0.1.0",
   "description": "Project overview, search and document checks beside Dropbox.",
-  "permissions": ["sidePanel", "storage", "tabs"],
+  "permissions": ["sidePanel", "storage", "tabs", "identity"],
   "host_permissions": ["https://www.dropbox.com/*", "https://*.dropbox.com/*"],
   "background": {"service_worker": "background.js", "type": "module"},
   "action": {"default_title": "Open Docsifter"},
